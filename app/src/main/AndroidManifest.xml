@@ -25,7 +25,8 @@
         </activity>
         <activity
             android:name=".PauseActivity"
-            android:label="@string/title_activity_pause" >
+            android:label="@string/title_activity_pause"
+            android:screenOrientation="landscape">
         </activity>
     </application>
 

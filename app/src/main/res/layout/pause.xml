@@ -68,7 +68,7 @@
                 android:layout_weight="1.0"
                 android:onClick="clickD"
                 android:textSize="40dp"
-                android:text="&lt; Resume &gt;" />
+                android:text="Resume" />
 
         </LinearLayout>
     </LinearLayout>

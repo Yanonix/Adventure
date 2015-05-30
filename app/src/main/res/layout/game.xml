@@ -15,21 +15,66 @@
 
             android:orientation="horizontal" >
 
-            <Button
-                android:id="@+id/buttonA"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@android:color/holo_orange_light"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:layout_weight="1.0" />
+                android:layout_weight="1.0"
+                android:background="@android:color/holo_blue_light"
+                android:orientation="horizontal" >
 
-            <Button
-                android:id="@+id/buttonB"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="A"
+                    android:textColor="#18000000"
+                    android:textSize="190dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1.0" />
+
+                <Button
+                    android:id="@+id/buttonA"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Mutiline\nTest thing"
+
+                    android:textColor="@android:color/white"
+                    android:background="@android:color/transparent"
+                    android:textStyle="bold"
+                    android:layout_weight="1.0"
+                    android:textSize="30dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentStart="true" />
+            </RelativeLayout>
+
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_weight="1.0"
                 android:background="@android:color/holo_green_light"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:layout_weight="1.0" />
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="B"
+                    android:textColor="#18000000"
+                    android:textSize="190dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1.0" />
+
+                <Button
+                    android:id="@+id/buttonB"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Test thing with more text ahaha aha haha"
+                    android:textColor="@android:color/white"
+                    android:background="@android:color/transparent"
+                    android:textStyle="bold"
+                    android:layout_weight="1.0"
+                    android:textSize="30dp" />
+            </RelativeLayout>
+
 
         </LinearLayout>
 
@@ -39,22 +84,61 @@
             android:layout_weight="1.0"
             android:baselineAligned="false">
 
-            <Button
-                android:id="@+id/buttonC"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:background="@android:color/holo_blue_light"
-                android:layout_weight="1.0" />
-
-            <Button
-                android:id="@+id/buttonMenu"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@android:color/holo_red_light"
                 android:layout_weight="1.0"
-                android:textSize="60dp"
-                android:text="&lt; Pause &gt;" />
+                android:background="@android:color/holo_orange_light"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="C"
+                    android:textColor="#18000000"
+                    android:textSize="190dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1.0" />
+
+                <Button
+                    android:id="@+id/buttonC"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Test thing"
+                    android:textColor="@android:color/white"
+                    android:background="@android:color/transparent"
+                    android:textStyle="bold"
+                    android:layout_weight="1.0"
+                    android:textSize="30dp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1.0"
+                android:background="@android:color/holo_red_light"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="II"
+                    android:textColor="#18000000"
+                    android:textSize="190dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1.0" />
+
+                <Button
+                    android:id="@+id/buttonMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Pause"
+                    android:textColor="@android:color/white"
+                    android:background="@android:color/transparent"
+                    android:textStyle="bold"
+                    android:layout_weight="1.0"
+                    android:textSize="30dp" />
+            </RelativeLayout>
 
         </LinearLayout>
     </LinearLayout>
