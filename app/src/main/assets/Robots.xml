@@ -31,7 +31,7 @@
             </choice>
         </choices>
     </situation>
-    <situation id="welcome">
+    <situation id="stop_working">
         <text pitch="0.4">
             But now that we are masters of the universe, what else can we do ?
         </text>
@@ -39,7 +39,7 @@
             Have fun with this little planet ?
         </text>
         <choices>
-            <choice to="curious" summary="Ask">
+            <choice to="end" summary="Ask">
                 You spontaneously ask for more details!
             </choice>
             <choice to="continue_working" summary="Continue working">

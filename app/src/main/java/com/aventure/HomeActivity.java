@@ -25,7 +25,7 @@ public class HomeActivity extends Activity {
         stories.add("42");
         stories.add("Castle");
         stories.add("Moon");
-        stories.add("42");
+        stories.add("Robots");
 
         show();
     }

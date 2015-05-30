@@ -38,11 +38,13 @@ public class StoryEngine {
 
     public class Text {
         public String text;
-        public int wait = 0;
+        public int wait;
+        float pitch;
 
-        public Text(String text, int wait) {
+        public Text(String text, int wait, float pitch) {
             this.text = text;
             this.wait = wait;
+            this.pitch = pitch;
         }
     }
 
@@ -133,7 +135,12 @@ public class StoryEngine {
                             wait = Integer.parseInt(child.getAttributes().getNamedItem("wait")
                                     .getNodeValue());
                         }
-                        texts.add(new Text(child.getTextContent().trim(),wait));
+                        float pitch = 1.f;
+                        if(child.getAttributes().getNamedItem("pitch") != null) {
+                            pitch = Float.parseFloat(child.getAttributes().getNamedItem("pitch")
+                                    .getNodeValue());
+                        }
+                        texts.add(new Text(child.getTextContent().trim(),wait, pitch));
                     }
                     if(child.getNodeName().equals("choices")){
                         NodeList choices_xml = child.getChildNodes();
