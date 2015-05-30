@@ -16,20 +16,22 @@
             android:orientation="horizontal" >
 
             <Button
-                android:id="@+id/button1"
+                android:id="@+id/buttonA"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@android:color/holo_orange_light"
+                android:textAppearance="?android:attr/textAppearanceLarge"
                 android:layout_weight="1.0"
-                android:text="Contourner la porte" />
+                android:text="A\nContourner la porte" />
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/buttonB"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@android:color/holo_green_light"
+                android:textAppearance="?android:attr/textAppearanceLarge"
                 android:layout_weight="1.0"
-                android:text="Discuter avec le garde" />
+                android:text="B\nDiscuter avec le garde" />
 
         </LinearLayout>
 
@@ -40,16 +42,16 @@
             android:orientation="horizontal" >
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/buttonC"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:textAppearance="?android:attr/textAppearanceLarge"
                 android:background="@android:color/holo_blue_light"
                 android:layout_weight="1.0"
-                android:text="Combattre le garde" />
+                android:text="C\nCombattre le garde" />
 
 
             <Button
-                android:id="@+id/button4"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@android:color/holo_red_light"

@@ -1,0 +1,37 @@
+<story>
+    <situation id="welcome">
+        <text>
+            Welcome dear Friend to the greatest adventure of all time.
+            An adventure for the bravest of us.
+            An adventure for you!
+            Are you ready ?
+        </text>
+        <choices>
+            <choice to="welcome2">
+                I am! Let's do it baby!
+            </choice>
+            <choice to="welcome_end">
+                Not now, maybe another time "chérie" !
+            </choice>
+        </choices>
+    </situation>
+    <situation id="welcome2">
+        <text>
+            Here we are. The moment you've been waiting for all this time.
+            You arrive at the 42 school. A guy call you.
+        </text>
+        <choices>
+            <choice to="reception">
+                Go see him! He looks nice!
+            </choice>
+            <choice to="reception">
+                Say "Fuck this shit!" and leave!
+            </choice>
+        </choices>
+    </situation>
+    <situation id="welcome_end">
+        <text>
+            The end
+        </text>
+    </situation>
+</story>
