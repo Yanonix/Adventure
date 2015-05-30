@@ -17,6 +17,7 @@ import java.util.Locale;
 public class GameActivity extends Activity {
 
     public static String STORY = "GameActivity.story";
+    public static int PAUSE_MENU = 101;
 
     StoryEngine engine;
     ArrayList<Button> buttons;
@@ -40,8 +41,8 @@ public class GameActivity extends Activity {
         (((Button) findViewById(R.id.buttonMenu))).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(GameActivity.this, PauseActivity.class);
-                startActivity(intent);
+                Intent intent = new Intent(getApplicationContext(), PauseActivity.class);
+                startActivityForResult(intent, PAUSE_MENU);
             }
         });
 
@@ -94,19 +95,15 @@ public class GameActivity extends Activity {
                                                 result.contains("f*** you"))
                                         {
                                             voice.speak("Bye, see you !", TextToSpeech.QUEUE_FLUSH, null, null);
-
-                                            
-
-                                            Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
-                                            startActivity(intent);
+                                            finish();
                                         }
                                         else if(result.contains("brake")    ||
                                                 result.contains("pause") ||
                                                 result.contains("wait"))
                                         {
                                             voice.speak("Pause", TextToSpeech.QUEUE_FLUSH, null, null);
-                                            Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
-                                            startActivity(intent);
+                                            Intent intent = new Intent(getApplicationContext(), PauseActivity.class);
+                                            startActivityForResult(intent, PAUSE_MENU);
                                         }
                                         else if(result.equals("a")      ||
                                                 result.equals("hey")    ||
@@ -217,7 +214,7 @@ public class GameActivity extends Activity {
             String letter = letters[i];
 
             // Set button
-            buttons.get(i).setText(letter + "\n" + choice.text);
+            buttons.get(i).setText(choice.text);
 
             // Set voice
             voice.playSilentUtterance(700, TextToSpeech.QUEUE_ADD, null);
@@ -230,11 +227,37 @@ public class GameActivity extends Activity {
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == PAUSE_MENU) {
+            if (resultCode == PauseActivity.REPEAT) {
+                fillQuestions();
+            }
+            else if (resultCode == PauseActivity.UNDO) {
+                engine.undo();
+                fillQuestions();
+            }
+            else if (resultCode == PauseActivity.HOME) {
+                finish();
+            }
+        }
+    }
+
+    @Override
     protected void onDestroy() {
         mSpeechRecognition.destroy();
-        voice.stop();
+        //voice.stop();
         voice.shutdown();
 
         super.onDestroy();
     }
+
+    @Override
+    protected void onStop() {
+        mSpeechRecognition.cancel();
+        voice.stop();
+
+        super.onStop();
+
+    }
+
 }

@@ -26,4 +26,10 @@ public class HomeActivity extends Activity {
         startActivity(intent);
     }
 
+    public void loadC(View v){
+        Intent intent = new Intent(this, GameActivity.class);
+        intent.putExtra(GameActivity.STORY, "mirror");
+        startActivity(intent);
+    }
+
 }

@@ -33,9 +33,12 @@ import javax.xml.transform.stream.StreamResult;
 
 public class StoryEngine {
 
-    class Text {
-        String text;
-        int wait = 0;
+
+
+
+    public class Text {
+        public String text;
+        public int wait = 0;
 
         public Text(String text, int wait) {
             this.text = text;
@@ -44,8 +47,8 @@ public class StoryEngine {
     }
 
     class Choice {
-        String text;
-        String to;
+        public String text;
+        public String to;
 
         public Choice(String text, String to) {
             this.text = text;
@@ -62,9 +65,9 @@ public class StoryEngine {
     }
 
     class Situation {
-        String id;
-        ArrayList<Text> texts;
-        ArrayList<Choice> choices;
+        public String id;
+        public ArrayList<Text> texts;
+        public ArrayList<Choice> choices;
 
         public Situation(String id, ArrayList<Text> texts, ArrayList<Choice> choices) {
             this.id = id;
@@ -91,8 +94,9 @@ public class StoryEngine {
         }
     }
 
-    HashMap<String, Situation> situations;
-    String state_id = "";
+    private HashMap<String, Situation> situations;
+    private String state_id = "";
+    private String state_old = "";
 
 
     public StoryEngine(InputStream is) {
@@ -114,6 +118,7 @@ public class StoryEngine {
                 String id = situation.getAttributes().getNamedItem("id").getNodeValue();
                 if(i == 0){
                     state_id = id;
+                    state_old = state_id;
                 }
                 NodeList childs = situation.getChildNodes();
                 ArrayList<Text> texts = new ArrayList<>();
@@ -142,11 +147,11 @@ public class StoryEngine {
                 }
                 this.situations.put(id, new Situation(id, texts, choices));
             }
-        } catch (IOException e) {
+        } catch (SAXException e) {
             e.printStackTrace();
         } catch (ParserConfigurationException e) {
             e.printStackTrace();
-        } catch (SAXException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -174,12 +179,17 @@ public class StoryEngine {
         if(getSituation().choices.size() > i) {
             String next_state = getSituation().choices.get(i).to;
             if (situations.containsKey(next_state)) {
+                state_old = state_id;
                 this.state_id = next_state;
                 return true;
             }
         }
 
         return false;
+    }
+
+    public void undo() {
+        state_id = state_old;
     }
 
 }
