@@ -9,18 +9,23 @@
         android:icon="@mipmap/ic_launcher"
         android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
         <activity
-            android:name=".MainActivity"
+            android:name=".GameActivity"
             android:label="@string/app_name"
             android:screenOrientation="landscape" >
         </activity>
         <activity
-            android:name=".MenuActivity"
+            android:name=".HomeActivity"
             android:label="@string/app_name"
             android:screenOrientation="landscape" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".PauseActivity"
+            android:label="@string/title_activity_pause" >
         </activity>
     </application>
 

@@ -54,7 +54,7 @@
                 android:background="@android:color/holo_red_light"
                 android:layout_weight="1.0"
                 android:textSize="60dp"
-                android:text="Pause" />
+                android:text="&lt; Pause &gt;" />
 
         </LinearLayout>
     </LinearLayout>

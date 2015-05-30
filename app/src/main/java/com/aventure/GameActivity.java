@@ -5,8 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.speech.tts.UtteranceProgressListener;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -16,9 +14,9 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 
-public class MainActivity extends Activity {
+public class GameActivity extends Activity {
 
-    public static String STORY = "MainActivity.story";
+    public static String STORY = "GameActivity.story";
 
     StoryEngine engine;
     ArrayList<Button> buttons;
@@ -31,7 +29,7 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+        setContentView(R.layout.game);
 
         // Buttons
         buttons = new ArrayList<>();
@@ -42,7 +40,8 @@ public class MainActivity extends Activity {
         (((Button) findViewById(R.id.buttonMenu))).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setContentView(R.layout.menu);
+                Intent intent = new Intent(GameActivity.this, PauseActivity.class);
+                startActivity(intent);
             }
         });
 
