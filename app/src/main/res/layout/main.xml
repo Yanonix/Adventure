@@ -39,7 +39,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1.0"
-            android:orientation="horizontal" >
+            android:baselineAligned="false">
 
             <Button
                 android:id="@+id/buttonC"
@@ -50,13 +50,14 @@
                 android:layout_weight="1.0"
                 android:text="C\nCombattre le garde" />
 
-
             <Button
+                android:id="@+id/buttonMenu"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@android:color/holo_red_light"
                 android:layout_weight="1.0"
-                android:text="" />
+                android:textSize="60dp"
+                android:text="Pause" />
 
         </LinearLayout>
     </LinearLayout>

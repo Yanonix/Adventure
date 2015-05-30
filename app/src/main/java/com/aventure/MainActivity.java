@@ -21,12 +21,19 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.main);
 
         buttons = new ArrayList<>();
         buttons.add((Button) findViewById(R.id.buttonA));
         buttons.add((Button) findViewById(R.id.buttonB));
         buttons.add((Button) findViewById(R.id.buttonC));
+
+        (((Button) findViewById(R.id.buttonMenu))).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setContentView(R.layout.menu);
+            }
+        });
 
         for (int i = 0; i < buttons.size(); i++) {
             final int j = i;
@@ -50,7 +57,6 @@ public class MainActivity extends Activity {
 
     private void fillQuestions() {
         StoryEngine.Situation situation = engine.getSituation();
-        Toast.makeText(this, situation.text(), Toast.LENGTH_SHORT).show();
         for(Button b : buttons){
             b.setText("");
         }
@@ -58,8 +64,7 @@ public class MainActivity extends Activity {
         for (int i = 0; i < situation.choices.size(); i++) {
             StoryEngine.Choice choice = situation.choices.get(i);
             String letter = letters[i];
-            buttons.get(i).setText(letter+"\n"+choice.text);
-            //Toast.makeText(this, letter + ":" + choice.text, Toast.LENGTH_SHORT).show();
+            buttons.get(i).setText(letter + "\n" + choice.text);
         }
     }
 

@@ -98,8 +98,6 @@ public class StoryEngine {
     public StoryEngine(InputStream is) {
         this.situations = new HashMap<>();
         try {
-            Log.e("x","loading xml");
-
             DocumentBuilderFactory factory;
             DocumentBuilder builder;
 
@@ -114,7 +112,6 @@ public class StoryEngine {
             for (int i = 0; i < situations_xml.getLength(); i++) {
                 Node situation = situations_xml.item(i);
                 String id = situation.getAttributes().getNamedItem("id").getNodeValue();
-                Log.e("x", "id:" + id);
                 if(i == 0){
                     state_id = id;
                 }
@@ -125,10 +122,9 @@ public class StoryEngine {
                     Node child = childs.item(j);
                     if(child.getNodeName().equals("text")){
                         int wait = 0;
-                        try {
-                            wait = Integer.parseInt(child.getAttributes().getNamedItem("wait").getNodeValue());
-                        } catch (Exception e){
-                            Log.e("d","no wait attrib");
+                        if(child.getAttributes().getNamedItem("wait") != null) {
+                            wait = Integer.parseInt(child.getAttributes().getNamedItem("wait")
+                                    .getNodeValue());
                         }
                         texts.add(new Text(child.getTextContent().trim(),wait));
                     }
@@ -145,8 +141,6 @@ public class StoryEngine {
                     }
                 }
                 this.situations.put(id, new Situation(id, texts, choices));
-                Log.e("x", "texts:" + texts.size());
-                Log.e("x","choices:"+choices.size());
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -177,9 +171,11 @@ public class StoryEngine {
     }
 
     public void makeChoice(int i){
-        String next_state = getSituation().choices.get(i).to;
-        if(situations.containsKey(next_state)){
-            this.state_id = next_state;
+        if(getSituation().choices.size() >= i) {
+            String next_state = getSituation().choices.get(i).to;
+            if (situations.containsKey(next_state)) {
+                this.state_id = next_state;
+            }
         }
     }
 
