@@ -19,7 +19,9 @@
                 android:id="@+id/buttonA"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@android:color/holo_blue_dark"
+                android:background="@android:color/holo_red_light"
+                android:textColor="@android:color/holo_orange_light"
+                android:textStyle="bold"
                 android:layout_weight="1.0"
                 android:onClick="loadA"
                 android:textSize="60dp"
@@ -29,7 +31,9 @@
                 android:id="@+id/buttonB"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@android:color/holo_purple"
+                android:textColor="@android:color/holo_red_light"
+                android:background="@android:color/holo_orange_light"
+                android:textStyle="bold"
                 android:layout_weight="1.0"
                 android:textSize="60dp"
                 android:text="Castle"
@@ -47,7 +51,9 @@
                 android:id="@+id/buttonC"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@android:color/holo_green_light"
+                android:textColor="@android:color/holo_red_light"
+                android:background="@android:color/holo_orange_light"
+                android:textStyle="bold"
                 android:layout_weight="1.0"
                 android:textSize="60dp"
                 android:text="Mirror" />
@@ -56,12 +62,12 @@
                 android:id="@+id/buttonD"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@android:color/holo_red_dark"
+                android:background="@android:color/holo_red_light"
+                android:textColor="@android:color/holo_orange_light"
                 android:layout_weight="1.0"
                 android:textSize="60dp"
-                android:text="Next" />
+                android:text="Next >" />
 
         </LinearLayout>
     </LinearLayout>
-
 </RelativeLayout>
