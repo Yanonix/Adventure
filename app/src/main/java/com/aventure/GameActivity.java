@@ -75,7 +75,7 @@ public class GameActivity extends Activity {
                     if(i < situation.choices.size()) {
                         buttons.get(i).post(new Runnable() {
                             public void run() {
-                                buttons.get(i).setText(situation.choices.get(i).text);
+                                buttons.get(i).setText(situation.choices.get(i).summary);
                             }
                         });
 
@@ -109,6 +109,7 @@ public class GameActivity extends Activity {
                                                 result.contains("bye bye") ||
                                                 result.contains("goodbye") ||
                                                 result.contains("shut up") ||
+                                                result.contains("fuck you") ||
                                                 result.contains("f*** you"))
                                         {
                                             voice.speak("Bye, see you !", TextToSpeech.QUEUE_FLUSH, null, null);
@@ -126,8 +127,7 @@ public class GameActivity extends Activity {
                                                 result.equals("hey")    ||
                                                 result.contains("first")  ||
                                                 result.equals("one")    ||
-                                                result.contains("yellow") ||
-                                                result.equals("orange"))
+                                                result.contains("blue"))
                                         {
                                             valid = true;
                                             available = engine.makeChoice(0);
@@ -144,7 +144,8 @@ public class GameActivity extends Activity {
                                         else if(result.equals("c")      ||
                                                 result.contains("third")  ||
                                                 result.equals("tree")   ||
-                                                result.contains("blue"))
+                                                result.contains("yellow")||
+                                                result.equals("orange"))
                                         {
                                             valid = true;
                                             available = engine.makeChoice(2);
@@ -261,7 +262,7 @@ public class GameActivity extends Activity {
                 // Affichage des choix
                 StoryEngine.Situation situation = engine.getSituation();
                 for (int i = 0; i < situation.choices.size(); i++) {
-                    buttons.get(i).setText(situation.choices.get(i).text);
+                    buttons.get(i).setText(situation.choices.get(i).summary);
                 }
             }
         }

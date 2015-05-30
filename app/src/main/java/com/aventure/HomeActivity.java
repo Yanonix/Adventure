@@ -117,7 +117,11 @@ public class HomeActivity extends Activity {
     }
 
     public void previousPage(){
-        startFrom -= 2;
+        if(startFrom <= 3) {
+            startFrom -= 3;
+        }
+        else
+            startFrom -= 2;
 
         if(startFrom < 0)
             startFrom = 0;

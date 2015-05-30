@@ -49,10 +49,12 @@ public class StoryEngine {
     class Choice {
         public String text;
         public String to;
+        public String summary;
 
-        public Choice(String text, String to) {
+        public Choice(String text, String to, String summary) {
             this.text = text;
             this.to = to;
+            this.summary = summary;
         }
 
         @Override
@@ -60,6 +62,7 @@ public class StoryEngine {
             return "Choice{" +
                     "text='" + text + '\'' +
                     ", to='" + to + '\'' +
+                    ", summary='" + summary + '\'' +
                     '}';
         }
     }
@@ -140,7 +143,15 @@ public class StoryEngine {
                             if(choice_xml.getNodeName().equals("choice")){
                                 String choice_text = choice_xml.getTextContent().trim();
                                 String choice_to = choice_xml.getAttributes().getNamedItem("to").getNodeValue();
-                                choices.add(new Choice(choice_text, choice_to));
+
+                                if(choice_xml.getAttributes().getNamedItem("summary") != null) {
+                                    String choice_summary = choice_xml.getAttributes().getNamedItem("summary").getNodeValue();
+                                    choices.add(new Choice(choice_text, choice_to, choice_summary));
+                                }
+                                else
+                                {
+                                    choices.add(new Choice(choice_text, choice_to, choice_text));
+                                }
                             }
                         }
                     }

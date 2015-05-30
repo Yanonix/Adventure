@@ -7,13 +7,13 @@
             Which princess do you want to rescue ?
         </text>
         <choices>
-            <choice to="rescue">
+            <choice to="rescue" summary="Hot">
                 The hot one
             </choice>
-            <choice to="rescue">
+            <choice to="rescue" summary="Kind">
                 The kind one
             </choice>
-            <choice to="rescue">
+            <choice to="rescue" summary="Mysterious">
                 The mysterious one
             </choice>
         </choices>
@@ -26,10 +26,10 @@
             Why did you choose here ?
         </text>
         <choices>
-            <choice to="welcome_end">
+            <choice to="welcome_end" summary="Bang her">
                 To bang her of course !
             </choice>
-            <choice to="welcome_end">
+            <choice to="welcome_end" summary="Pure random">
                 Pure random, like my life
             </choice>
         </choices>

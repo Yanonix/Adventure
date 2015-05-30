@@ -10,10 +10,10 @@
             Are you ready ?
         </text>
         <choices>
-            <choice to="welcome2" summary="yes">
+            <choice to="welcome2" summary="I am">
                 I am! Let's do it baby!
             </choice>
-            <choice to="welcome_end" summary="no">
+            <choice to="welcome_end" summary="Not now">
                 Not now, maybe another time bitch !
             </choice>
         </choices>

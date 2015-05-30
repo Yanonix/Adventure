@@ -67,7 +67,7 @@
                 android:layout_weight="1.0"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                aventure:text="Pause"
+                aventure:text="Menu"
                 aventure:backText="II"
                 aventure:textColor="@android:color/white"
                 aventure:textSize="15dp"
