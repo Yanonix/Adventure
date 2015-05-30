@@ -222,6 +222,7 @@ public class GameActivity extends Activity {
         }
 
         // Reset buttons
+        for (int i = 0; i < buttons.size(); i++) {
             Tile b = buttons.get(i);
             b.setText("");
         }
@@ -233,6 +234,9 @@ public class GameActivity extends Activity {
 
             // Set voice
             voice.playSilentUtterance(700, TextToSpeech.QUEUE_ADD, null);
+            voice.speak(letter, TextToSpeech.QUEUE_ADD, null, null);
+            voice.playSilentUtterance(500, TextToSpeech.QUEUE_ADD, null);
+            voice.speak(choice.text, TextToSpeech.QUEUE_ADD, null, ""+i);
         }
 
         // End of speech
