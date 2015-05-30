@@ -1,0 +1,55 @@
+<story main_voice="man">
+    <situation id="welcome">
+        <text pitch="5">
+            Here we are guys
+        </text>
+        <text wait="700" pitch="0.4">
+            Robots are dominating the world
+        </text>
+        <text pitch="3">
+            And these poors humans can do nothing about it!
+        </text>
+        <choices>
+            <choice to="continue_working" summary="Continue working">
+                You continue working
+            </choice>
+            <choice to="stop_working" summary="Stop working">
+                You have finally enought and decide to stop working
+            </choice>
+        </choices>
+    </situation>
+    <situation id="continue_working">
+        <text pitch="5">
+            Humans are good workers
+        </text>
+        <text wait="700" pitch="0.4">
+            Yes, they are
+        </text>
+        <choices>
+            <choice to="continue_working" summary="Continue working">
+                You continue working
+            </choice>
+        </choices>
+    </situation>
+    <situation id="welcome">
+        <text pitch="0.4">
+            But now that we are masters of the universe, what else can we do ?
+        </text>
+        <text wait="700" pitch="7">
+            Have fun with this little planet ?
+        </text>
+        <choices>
+            <choice to="curious" summary="Ask">
+                You spontaneously ask for more details!
+            </choice>
+            <choice to="continue_working" summary="Continue working">
+                Looks like it's risky, you choose to continue working
+            </choice>
+        </choices>
+    </situation>
+    <situation id="end">
+        <text>
+            The end.
+        </text>
+    </situation>
+</story>

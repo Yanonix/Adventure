@@ -77,4 +77,18 @@
         </LinearLayout>
     </LinearLayout>
 
+    <com.aventure.Tile
+        android:id="@+id/buttonEnd"
+        android:layout_weight="1.0"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        aventure:text="End"
+        android:onClick="end"
+        aventure:backText="Bye"
+        aventure:textColor="@android:color/white"
+        aventure:textSize="35sp"
+        aventure:backgroundColor="@android:color/holo_blue_dark"
+        />
+
 </RelativeLayout>

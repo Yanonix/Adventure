@@ -212,10 +212,12 @@ public class GameActivity extends Activity {
         // Situations
         final StoryEngine.Situation situation = engine.getSituation();
 
-        // Toast.makeText(this, situation.text, Toast.LENGTH_SHORT).show();
+        //if no choices, show end screen
+        if(situation.choices.size() == 0){
+            findViewById(R.id.buttonEnd).setVisibility(View.VISIBLE);
+        }
 
         voice.stop();
-        voice.setPitch(5f);
         for (int i = 0; i < situation.texts.size(); i++) {
             if(situation.texts.get(i).wait > 0) {
                 voice.playSilentUtterance(situation.texts.get(i).wait, TextToSpeech.QUEUE_ADD, null);
@@ -230,7 +232,6 @@ public class GameActivity extends Activity {
         }
 
         // Choices
-        voice.setPitch(0.1f);
         for (int i = 0; i < situation.choices.size(); i++) {
             StoryEngine.Choice choice = situation.choices.get(i);
             String letter = letters[i];
@@ -268,6 +269,10 @@ public class GameActivity extends Activity {
                 }
             }
         }
+    }
+
+    public void end(View v){
+        finish();
     }
 
     @Override
