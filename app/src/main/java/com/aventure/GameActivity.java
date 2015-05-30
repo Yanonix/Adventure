@@ -204,7 +204,7 @@ public class GameActivity extends Activity {
             String letter = letters[i];
 
             // Set button
-            buttons.get(i).setText(letter + "\n" + choice.text);
+            buttons.get(i).setText(choice.text);
 
             // Set voice
             voice.playSilentUtterance(700, TextToSpeech.QUEUE_ADD, null);
