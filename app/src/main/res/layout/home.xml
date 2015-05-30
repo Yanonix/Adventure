@@ -1,5 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    xmlns:aventure="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent"
     android:padding="0dp" tools:context=".MenuActivity">
 
@@ -16,27 +17,30 @@
 
             android:orientation="horizontal" >
 
-            <Button
+            <com.aventure.Tile
                 android:id="@+id/buttonA"
+                android:layout_weight="1.0"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@android:color/holo_red_light"
-                android:textColor="@android:color/holo_orange_light"
-                android:textStyle="bold"
-                android:layout_weight="1.0"
-                android:textSize="60dp"
-                android:text="42" />
+                aventure:text="42"
+                aventure:backText=""
+                aventure:textSize="40dp"
+                aventure:textColor="@android:color/holo_orange_light"
+                aventure:backgroundColor="@android:color/holo_red_light"
+                />
 
-            <Button
+
+            <com.aventure.Tile
                 android:id="@+id/buttonB"
+                android:layout_weight="1.0"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textColor="@android:color/holo_red_light"
-                android:background="@android:color/holo_orange_light"
-                android:textStyle="bold"
-                android:layout_weight="1.0"
-                android:textSize="60dp"
-                android:text="Castle" />
+                aventure:text="Castle"
+                aventure:backText=""
+                aventure:textColor="@android:color/holo_red_light"
+                aventure:textSize="40dp"
+                aventure:backgroundColor="@android:color/holo_orange_light"
+                />
 
         </LinearLayout>
 
@@ -46,26 +50,30 @@
             android:layout_weight="1.0"
             android:baselineAligned="false">
 
-            <Button
+            <com.aventure.Tile
                 android:id="@+id/buttonC"
+                android:layout_weight="1.0"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textColor="@android:color/holo_red_light"
-                android:background="@android:color/holo_orange_light"
-                android:textStyle="bold"
-                android:layout_weight="1.0"
-                android:textSize="60dp"
-                android:text="Unicorns" />
+                aventure:text="Unicycle"
+                aventure:backText=""
+                aventure:textColor="@android:color/holo_red_light"
+                aventure:textSize="40dp"
+                aventure:backgroundColor="@android:color/holo_orange_light"
+                />
 
-            <Button
+
+            <com.aventure.Tile
                 android:id="@+id/buttonD"
+                android:layout_weight="1.0"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@android:color/holo_red_light"
-                android:textColor="@android:color/holo_orange_light"
-                android:layout_weight="1.0"
-                android:textSize="60dp"
-                android:text="Next >" />
+                aventure:text="Next"
+                aventure:backText=">"
+                aventure:textColor="@android:color/holo_orange_light"
+                aventure:textSize="40dp"
+                aventure:backgroundColor="@android:color/holo_red_light"
+                />
 
         </LinearLayout>
     </LinearLayout>

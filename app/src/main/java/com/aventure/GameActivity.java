@@ -20,7 +20,7 @@ public class GameActivity extends Activity {
     public static int PAUSE_MENU = 101;
 
     StoryEngine engine;
-    ArrayList<Button> buttons;
+    ArrayList<Tile> buttons;
     String[] letters = {"A","B","C"};
 
     private TextToSpeech voice;
@@ -34,11 +34,11 @@ public class GameActivity extends Activity {
 
         // Buttons
         buttons = new ArrayList<>();
-        buttons.add((Button) findViewById(R.id.buttonA));
-        buttons.add((Button) findViewById(R.id.buttonB));
-        buttons.add((Button) findViewById(R.id.buttonC));
+        buttons.add((Tile) findViewById(R.id.buttonA));
+        buttons.add((Tile) findViewById(R.id.buttonB));
+        buttons.add((Tile) findViewById(R.id.buttonC));
 
-        (((Button) findViewById(R.id.buttonMenu))).setOnClickListener(new View.OnClickListener() {
+        (((Tile) findViewById(R.id.buttonMenu))).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), PauseActivity.class);
@@ -48,7 +48,7 @@ public class GameActivity extends Activity {
 
         for (int i = 0; i < buttons.size(); i++) {
             final int j = i;
-            Button b = buttons.get(i);
+            Tile b = buttons.get(i);
             b.setText("");
             b.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -205,7 +205,7 @@ public class GameActivity extends Activity {
         }
 
         // Reset buttons
-        for(Button b : buttons) {
+        for(Tile b : buttons) {
             b.setText("");
         }
 

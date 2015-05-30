@@ -1,3 +1,9 @@
 <resources>
-
+    <declare-styleable name="Tile">
+        <attr name="text" format="string" />
+        <attr name="backText" format="string" />
+        <attr name="textColor" format="color" />
+        <attr name="textSize" format="dimension" />
+        <attr name="backgroundColor" format="color" />
+    </declare-styleable>
 </resources>
