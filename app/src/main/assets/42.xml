@@ -10,12 +10,12 @@
             Are you ready ?
         </text>
         <choices>
-            <choice to="welcome2" summary="I am">
-                I am! Let's do it baby!
-            </choice>
-            <choice to="welcome_end" summary="Not now">
-                Not now, maybe another time bitch !
-            </choice>
+        <choice to="welcome2" summary="I am">
+            I am! Let's do it baby!
+        </choice>
+        <choice to="welcome_end" summary="Not now">
+            Not now, maybe another time bitch !
+        </choice>
         </choices>
     </situation>
     <situation id="welcome2">
@@ -29,8 +29,8 @@
             <choice to="reception" summary="Go see him">
                 Go see him! He looks nice!
             </choice>
-            <choice to="reception" summary="Leave">
-                Say "Fuck this shit!" and leave!
+            <choice to="reception" summary="Go to a bar">
+                Go to the nearest bar
             </choice>
         </choices>
     </situation>
