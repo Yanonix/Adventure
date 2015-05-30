@@ -2,6 +2,7 @@ package com.aventure;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.AudioManager;
 import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
 
@@ -11,10 +12,12 @@ public class SpeechRecognition {
 
     private SpeechRecognizer mSpeechRecognizer;
     private boolean mIsListening = false;
+    private AudioManager am;
 
     public SpeechRecognition(Context context)
     {
         mSpeechRecognizer = SpeechRecognizer.createSpeechRecognizer(context);
+        am = (AudioManager)context.getSystemService(Context.AUDIO_SERVICE);
     }
 
     public void prompt(SpeechRecognitionListener speechRecognitionListener) {
@@ -28,6 +31,7 @@ public class SpeechRecognition {
 
         if(!mIsListening) {
             mIsListening = true;
+            mute();
             mSpeechRecognizer.startListening(intent);
         }
     }
@@ -36,9 +40,19 @@ public class SpeechRecognition {
         mIsListening = false;
     }
 
+    public void mute() {
+        //am.setStreamMute(AudioManager.STREAM_SYSTEM, true);
+    }
+
+    public void unMute() {
+        //am.setStreamMute(AudioManager.STREAM_SYSTEM, false);
+    }
+
     public void cancel() {
         mSpeechRecognizer.cancel();
+        unLock();
     }
+
 
     public void destroy()
     {

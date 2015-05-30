@@ -23,7 +23,7 @@ public class HomeActivity extends Activity {
 
         // Stories
         stories.add("42");
-        stories.add("castle");
+        stories.add("Castle");
 
         show();
     }

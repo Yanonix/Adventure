@@ -34,7 +34,7 @@
             </choice>
         </choices>
     </situation>
-    <situation id="welcome_end">
+    <situation id="reception">
         <text>
             The end.
         </text>
