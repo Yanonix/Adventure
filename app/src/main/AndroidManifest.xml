@@ -24,11 +24,11 @@
             </intent-filter>
             <intent-filter>
                 <action android:name="com.mirrorlink.android.app.TERMINATE" />
-                <category android:name="ANDROID.INTENT.CATEGORY.DEFAULT" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
             <intent-filter>
                 <action android:name="com.mirrorlink.android.app.LAUNCH" />
-                <category android:name="ANDROID.INTENT.CATEGORY.DEFAULT" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
