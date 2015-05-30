@@ -49,6 +49,7 @@ public class GameActivity extends Activity {
         for (int i = 0; i < buttons.size(); i++) {
             final int j = i;
             Button b = buttons.get(i);
+            b.setText("");
             b.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

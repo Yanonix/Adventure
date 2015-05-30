@@ -122,11 +122,13 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="II"
                     android:textColor="#18000000"
                     android:textSize="190dp"
                     android:layout_gravity="center_vertical"
-                    android:layout_weight="1.0" />
+                    android:layout_weight="1.0"
+                    android:text="&#9654;" />
+
+
 
                 <Button
                     android:id="@+id/buttonMenu"
@@ -138,6 +140,7 @@
                     android:textStyle="bold"
                     android:layout_weight="1.0"
                     android:textSize="30dp" />
+
             </RelativeLayout>
 
         </LinearLayout>

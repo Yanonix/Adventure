@@ -6,7 +6,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -54,7 +55,7 @@
                 android:textStyle="bold"
                 android:layout_weight="1.0"
                 android:textSize="60dp"
-                android:text="Mirror" />
+                android:text="Unicorns" />
 
             <Button
                 android:id="@+id/buttonD"

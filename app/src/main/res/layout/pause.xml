@@ -14,30 +14,67 @@
             android:layout_weight="1.0"
 
             android:orientation="horizontal" >
-
-            <Button
-                android:id="@+id/buttonA"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_weight="1.0"
                 android:background="@android:color/holo_green_light"
-                android:textColor="@android:color/white"
-                android:textStyle="bold"
-                android:layout_weight="1.0"
-                android:onClick="clickA"
-                android:textSize="50dp"
-                android:text="Repeat" />
+                android:orientation="horizontal" >
 
-            <Button
-                android:id="@+id/buttonB"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#18000000"
+                    android:textSize="190dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1.0"
+                    android:text="↺" />
+
+
+                <Button
+                    android:id="@+id/buttonA"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Repeat"
+                    android:textColor="@android:color/white"
+                    android:background="@android:color/transparent"
+                    android:textStyle="bold"
+                    android:onClick="clickA"
+                    android:layout_weight="1.0"
+                    android:textSize="30dp" />
+            </RelativeLayout>
+
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@android:color/holo_green_dark"
-                android:textColor="@android:color/white"
-                android:textStyle="bold"
                 android:layout_weight="1.0"
-                android:textSize="50dp"
-                android:text="Undo last action"
-                android:onClick="clickB" />
+                android:background="@android:color/holo_green_dark"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#18000000"
+                    android:textSize="190dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1.0"
+                    android:text="↶" />
+
+
+                <Button
+                    android:id="@+id/buttonB"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Undo last action"
+                    android:textColor="@android:color/white"
+                    android:background="@android:color/transparent"
+                    android:textStyle="bold"
+                    android:onClick="clickB"
+                    android:layout_weight="1.0"
+                    android:textSize="30dp" />
+
+            </RelativeLayout>
+
 
         </LinearLayout>
 
@@ -47,28 +84,69 @@
             android:layout_weight="1.0"
             android:baselineAligned="false">
 
-            <Button
-                android:id="@+id/buttonC"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@android:color/holo_green_dark"
-                android:textColor="@android:color/white"
-                android:textStyle="bold"
-                android:layout_weight="1.0"
-                android:textSize="50dp"
-                android:onClick="clickC"
-                android:text="Menu" />
 
-            <Button
-                android:id="@+id/buttonD"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@android:color/holo_green_light"
-                android:textColor="@android:color/white"
                 android:layout_weight="1.0"
-                android:onClick="clickD"
-                android:textSize="40dp"
-                android:text="Resume" />
+                android:background="@android:color/holo_green_dark"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#18000000"
+                    android:textSize="190dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1.0"
+                    android:text="↩" />
+
+
+                <Button
+                    android:id="@+id/buttonC"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Menu"
+                    android:textColor="@android:color/white"
+                    android:background="@android:color/transparent"
+                    android:textStyle="bold"
+                    android:onClick="clickC"
+                    android:layout_weight="1.0"
+                    android:textSize="30dp" />
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1.0"
+                android:background="@android:color/holo_green_light"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#18000000"
+                    android:textSize="190dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1.0"
+                    android:text="&#9654;" />
+
+
+                <Button
+                    android:id="@+id/buttonD"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Resume"
+                    android:textColor="@android:color/white"
+                    android:background="@android:color/transparent"
+                    android:textStyle="bold"
+                    android:onClick="clickD"
+                    android:layout_weight="1.0"
+                    android:textSize="30dp" />
+
+            </RelativeLayout>
 
         </LinearLayout>
     </LinearLayout>
