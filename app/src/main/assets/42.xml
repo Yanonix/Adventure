@@ -10,10 +10,10 @@
             Are you ready ?
         </text>
         <choices>
-            <choice to="welcome2">
+            <choice to="welcome2" summary="yes">
                 I am! Let's do it baby!
             </choice>
-            <choice to="welcome_end">
+            <choice to="welcome_end" summary="no">
                 Not now, maybe another time bitch !
             </choice>
         </choices>
@@ -26,10 +26,10 @@
             You arrive at the 42 school. A guy behind a desk call you.
         </text>
         <choices>
-            <choice to="reception">
+            <choice to="reception" summary="Go see him">
                 Go see him! He looks nice!
             </choice>
-            <choice to="reception">
+            <choice to="reception" summary="Leave">
                 Say "Fuck this shit!" and leave!
             </choice>
         </choices>
