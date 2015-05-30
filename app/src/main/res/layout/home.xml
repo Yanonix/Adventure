@@ -23,7 +23,6 @@
                 android:textColor="@android:color/holo_orange_light"
                 android:textStyle="bold"
                 android:layout_weight="1.0"
-                android:onClick="loadA"
                 android:textSize="60dp"
                 android:text="42" />
 
@@ -36,8 +35,7 @@
                 android:textStyle="bold"
                 android:layout_weight="1.0"
                 android:textSize="60dp"
-                android:text="Castle"
-                android:onClick="loadB" />
+                android:text="Castle" />
 
         </LinearLayout>
 

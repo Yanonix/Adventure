@@ -97,7 +97,7 @@ public class GameActivity extends Activity {
                                             voice.speak("Bye, see you !", TextToSpeech.QUEUE_FLUSH, null, null);
                                             finish();
                                         }
-                                        else if(result.contains("brake")    ||
+                                        else if(result.contains("break")    ||
                                                 result.contains("pause") ||
                                                 result.contains("wait"))
                                         {
