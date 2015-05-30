@@ -50,7 +50,12 @@ public class SpeechRecognitionListener implements RecognitionListener {
     public void onError(int error)
     {
         //mSpeechRecognition.prompt(this);
+        if(error == SpeechRecognizer.ERROR_RECOGNIZER_BUSY) {
+            mSpeechRecognition.cancel();
+        }
+        mSpeechRecognition.unLock();
         onResult(null);
+
         Log.d(TAG, "error = " + error);
     }
 
@@ -63,7 +68,7 @@ public class SpeechRecognitionListener implements RecognitionListener {
     @Override
     public void onPartialResults(Bundle partialResults)
     {
-
+        mSpeechRecognition.unLock();
     }
 
     @Override
@@ -76,6 +81,9 @@ public class SpeechRecognitionListener implements RecognitionListener {
     public void onResults(Bundle results)
     {
         Log.d(TAG, "onResults"); //$NON-NLS-1$
+        mSpeechRecognition.cancel();
+        mSpeechRecognition.unLock();
+
         ArrayList<String> matches = results.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
         // matches are the return values of speech recognition engine
         // Use these values for whatever you wish to do

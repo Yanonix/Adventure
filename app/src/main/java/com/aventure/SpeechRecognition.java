@@ -12,12 +12,11 @@ import java.util.Locale;
  */
 public class SpeechRecognition {
 
-    private Context context;
     private SpeechRecognizer mSpeechRecognizer;
+    private boolean mIsListening = false;
 
-    public SpeechRecognition(Context _context)
+    public SpeechRecognition(Context context)
     {
-        context = _context;
         mSpeechRecognizer = SpeechRecognizer.createSpeechRecognizer(context);
     }
 
@@ -28,11 +27,20 @@ public class SpeechRecognition {
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
 
-        //intent.putExtra(RecognizerIntent.EXTRA_CALLING_PACKAGE, this.getPackageName());
-
         mSpeechRecognizer.setRecognitionListener(speechRecognitionListener);
 
-        mSpeechRecognizer.startListening(intent);
+        if(!mIsListening) {
+            mIsListening = true;
+            mSpeechRecognizer.startListening(intent);
+        }
+    }
+
+    public void unLock() {
+        mIsListening = false;
+    }
+
+    public void cancel() {
+        mSpeechRecognizer.cancel();
     }
 
     public void destroy()
