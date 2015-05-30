@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.media.AudioManager;
 import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
+import android.widget.Toast;
 
 import java.util.Locale;
 
@@ -13,9 +14,11 @@ public class SpeechRecognition {
     private SpeechRecognizer mSpeechRecognizer;
     private boolean mIsListening = false;
     private AudioManager am;
+    private Context context;
 
     public SpeechRecognition(Context context)
     {
+        this.context = context;
         mSpeechRecognizer = SpeechRecognizer.createSpeechRecognizer(context);
         am = (AudioManager)context.getSystemService(Context.AUDIO_SERVICE);
     }
@@ -59,4 +62,7 @@ public class SpeechRecognition {
         mSpeechRecognizer.destroy();
     }
 
+    public void toast(String s) {
+        Toast.makeText(context, s, Toast.LENGTH_SHORT).show();
+    }
 }

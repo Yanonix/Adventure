@@ -50,6 +50,10 @@ public class SpeechRecognitionListener implements RecognitionListener {
         if(error == SpeechRecognizer.ERROR_RECOGNIZER_BUSY) {
             mSpeechRecognition.cancel();
         }
+        else if(error == SpeechRecognizer.ERROR_SERVER) {
+            mSpeechRecognition.cancel();
+            mSpeechRecognition.toast("Error Server");
+        }
         mSpeechRecognition.unLock();
         onResult(null);
 
