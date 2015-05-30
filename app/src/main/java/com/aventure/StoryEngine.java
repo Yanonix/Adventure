@@ -33,6 +33,16 @@ import javax.xml.transform.stream.StreamResult;
 
 public class StoryEngine {
 
+    class Text {
+        String text;
+        int wait = 0;
+
+        public Text(String text, int wait) {
+            this.text = text;
+            this.wait = wait;
+        }
+    }
+
     class Choice {
         String text;
         String to;
@@ -53,12 +63,12 @@ public class StoryEngine {
 
     class Situation {
         String id;
-        String text;
+        ArrayList<Text> texts;
         ArrayList<Choice> choices;
 
-        public Situation(String id, String text, ArrayList<Choice> choices) {
+        public Situation(String id, ArrayList<Text> texts, ArrayList<Choice> choices) {
             this.id = id;
-            this.text = text;
+            this.texts = texts;
             this.choices = choices;
         }
 
@@ -66,9 +76,18 @@ public class StoryEngine {
         public String toString() {
             return "Situation{" +
                     "id='" + id + '\'' +
-                    ", text='" + text + '\'' +
+                    ", n(text)='" + texts.size() + '\'' +
                     ", n(choices)=" + choices.size() +
                     '}';
+        }
+
+        public String text() {
+            StringBuilder out = new StringBuilder();
+            for (Text t : texts)
+            {
+                out.append(t.text);
+            }
+            return out.toString();
         }
     }
 
@@ -100,12 +119,18 @@ public class StoryEngine {
                     state_id = id;
                 }
                 NodeList childs = situation.getChildNodes();
-                String text = "";
+                ArrayList<Text> texts = new ArrayList<>();
                 ArrayList<Choice> choices = new ArrayList<>();
                 for (int j = 0; j < childs.getLength(); j++) {
                     Node child = childs.item(j);
                     if(child.getNodeName().equals("text")){
-                        text = child.getTextContent().trim();
+                        int wait = 0;
+                        try {
+                            wait = Integer.parseInt(child.getAttributes().getNamedItem("wait").getNodeValue());
+                        } catch (Exception e){
+                            Log.e("d","no wait attrib");
+                        }
+                        texts.add(new Text(child.getTextContent().trim(),wait));
                     }
                     if(child.getNodeName().equals("choices")){
                         NodeList choices_xml = child.getChildNodes();
@@ -119,8 +144,8 @@ public class StoryEngine {
                         }
                     }
                 }
-                this.situations.put(id, new Situation(id, text, choices));
-                Log.e("x", "text:" + text);
+                this.situations.put(id, new Situation(id, texts, choices));
+                Log.e("x", "texts:" + texts.size());
                 Log.e("x","choices:"+choices.size());
             }
         } catch (IOException e) {
@@ -152,7 +177,10 @@ public class StoryEngine {
     }
 
     public void makeChoice(int i){
-        this.state_id = getSituation().choices.get(i).to;
+        String next_state = getSituation().choices.get(i).to;
+        if(situations.containsKey(next_state)){
+            this.state_id = next_state;
+        }
     }
 
 }

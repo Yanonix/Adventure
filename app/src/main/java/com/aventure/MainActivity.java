@@ -50,7 +50,7 @@ public class MainActivity extends Activity {
 
     private void fillQuestions() {
         StoryEngine.Situation situation = engine.getSituation();
-        Toast.makeText(this, situation.text, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, situation.text(), Toast.LENGTH_SHORT).show();
         for(Button b : buttons){
             b.setText("");
         }

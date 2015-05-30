@@ -10,9 +10,6 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-/**
- * Created by yanonix on 30/05/15.
- */
 public class SpeechRecognitionListener implements RecognitionListener {
 
     public static String TAG = "SpeechRecognitionListener";
