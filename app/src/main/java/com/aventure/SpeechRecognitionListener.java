@@ -72,6 +72,7 @@ public class SpeechRecognitionListener implements RecognitionListener {
     public void onReadyForSpeech(Bundle params)
     {
         Log.d(TAG, "onReadyForSpeech"); //$NON-NLS-1$
+        mSpeechRecognition.unMute();
     }
 
     @Override

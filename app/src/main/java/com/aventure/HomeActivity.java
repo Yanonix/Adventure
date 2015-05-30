@@ -23,17 +23,9 @@ public class HomeActivity extends Activity {
 
         // Stories
         stories.add("42");
-        stories.add("castle");        // Stories
-        stories.add("sda 42");
-        stories.add("ca stdle");        // Stories
-        stories.add("42asd");
-        stories.add("castsadle");        // Stories
-        stories.add("42 sad");
-        stories.add("ca stsadle");        // Stories
-        stories.add("4s ad2");
-        stories.add("ca stle");        // Stories
-        stories.add("42dsads");
-        stories.add("ca ds stle");
+        stories.add("Castle");
+        stories.add("Castle");
+        stories.add("42");
 
         show();
     }

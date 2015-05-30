@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.speech.tts.UtteranceProgressListener;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -54,6 +55,7 @@ public class GameActivity extends Activity {
                 @Override
                 public void onClick(View v) {
                     if(engine.makeChoice(j)) {
+                        mSpeechRecognition.cancel();
                         fillQuestions();
                     }
                 }
@@ -65,6 +67,20 @@ public class GameActivity extends Activity {
         utteranceProgressListener = new UtteranceProgressListener(){
             @Override
             public void onStart(String utteranceId) {
+                if(utteranceId.equals("0") || utteranceId.equals("1") || utteranceId.equals("2"))
+                {
+                    // Set button
+                    final StoryEngine.Situation situation = engine.getSituation();
+                    final int i = Integer.parseInt(utteranceId);
+                    if(i < situation.choices.size()) {
+                        buttons.get(i).post(new Runnable() {
+                            public void run() {
+                                buttons.get(i).setText(situation.choices.get(i).text);
+                            }
+                        });
+
+                    }
+                }
             }
 
             @Override
@@ -197,11 +213,12 @@ public class GameActivity extends Activity {
 
         // Toast.makeText(this, situation.text, Toast.LENGTH_SHORT).show();
 
+        voice.stop();
         for (int i = 0; i < situation.texts.size(); i++) {
             if(situation.texts.get(i).wait > 0) {
                 voice.playSilentUtterance(situation.texts.get(i).wait, TextToSpeech.QUEUE_ADD, null);
             }
-            voice.speak(situation.texts.get(i).text, TextToSpeech.QUEUE_FLUSH, null, null);
+            voice.speak(situation.texts.get(i).text, TextToSpeech.QUEUE_ADD, null, null);
         }
 
         // Reset buttons
@@ -214,12 +231,9 @@ public class GameActivity extends Activity {
             StoryEngine.Choice choice = situation.choices.get(i);
             String letter = letters[i];
 
-            // Set button
-            buttons.get(i).setText(choice.text);
-
             // Set voice
             voice.playSilentUtterance(700, TextToSpeech.QUEUE_ADD, null);
-            voice.speak(letter + ". " + choice.text, TextToSpeech.QUEUE_ADD, null, null);
+            voice.speak(letter + ". " + choice.text, TextToSpeech.QUEUE_ADD, null, ""+i);
         }
 
         // End of speech
@@ -230,6 +244,7 @@ public class GameActivity extends Activity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == PAUSE_MENU) {
+
             if (resultCode == PauseActivity.REPEAT) {
                 fillQuestions();
             }
@@ -239,6 +254,12 @@ public class GameActivity extends Activity {
             }
             else if (resultCode == PauseActivity.HOME) {
                 finish();
+            } else {
+                // Affichage des choix
+                StoryEngine.Situation situation = engine.getSituation();
+                for (int i = 0; i < situation.choices.size(); i++) {
+                    buttons.get(i).setText(situation.choices.get(i).text);
+                }
             }
         }
     }
