@@ -113,7 +113,6 @@ public class StoryEngine {
             builder = factory.newDocumentBuilder();
 
             dom = builder.parse(is);
-
             NodeList situations_xml = dom.getElementsByTagName("situation");
 
             for (int i = 0; i < situations_xml.getLength(); i++) {

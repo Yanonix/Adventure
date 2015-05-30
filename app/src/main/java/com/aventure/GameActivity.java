@@ -216,6 +216,7 @@ public class GameActivity extends Activity {
         // Toast.makeText(this, situation.text, Toast.LENGTH_SHORT).show();
 
         voice.stop();
+        voice.setPitch(5f);
         for (int i = 0; i < situation.texts.size(); i++) {
             if(situation.texts.get(i).wait > 0) {
                 voice.playSilentUtterance(situation.texts.get(i).wait, TextToSpeech.QUEUE_ADD, null);
@@ -230,6 +231,7 @@ public class GameActivity extends Activity {
         }
 
         // Choices
+        voice.setPitch(0.1f);
         for (int i = 0; i < situation.choices.size(); i++) {
             StoryEngine.Choice choice = situation.choices.get(i);
             String letter = letters[i];

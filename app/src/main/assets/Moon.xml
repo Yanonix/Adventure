@@ -1,0 +1,23 @@
+<story main_voice="man">
+    <situation id="welcome">
+        <text>
+            Oh no! The moon is gonna explode ! Explode ! You need to do something about it!
+        </text>
+        <text wait="700">
+            What are you gonna do ?
+        </text>
+        <choices>
+            <choice to="end" summary="Take spacesuit">
+                You take your spacesuit and go to the NASA
+            </choice>
+            <choice to="end" summary="Go to shelter">
+                You go to the nearest shelter
+            </choice>
+        </choices>
+    </situation>
+    <situation id="reception">
+        <text>
+            The end.
+        </text>
+    </situation>
+</story>
