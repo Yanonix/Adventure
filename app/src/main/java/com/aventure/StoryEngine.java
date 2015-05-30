@@ -171,7 +171,7 @@ public class StoryEngine {
     }
 
     public boolean makeChoice(int i) {
-        if(getSituation().choices.size() >= i) {
+        if(getSituation().choices.size() > i) {
             String next_state = getSituation().choices.get(i).to;
             if (situations.containsKey(next_state)) {
                 this.state_id = next_state;
