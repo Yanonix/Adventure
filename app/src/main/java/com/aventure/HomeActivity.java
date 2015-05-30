@@ -48,7 +48,7 @@ public class HomeActivity extends Activity {
                 final int k = j;
                 b.setText(stories.get(j));
                 b.setBackText("");
-                b.setTypeface(Typeface.BOLD);
+                //b.setTypeface(Typeface.BOLD);
                 b.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -61,8 +61,7 @@ public class HomeActivity extends Activity {
             }
             else
             {
-                b.setText(null);
-                b.setBackText("");
+                b.clear();
                 b.setOnClickListener(null);
             }
         }
@@ -72,7 +71,7 @@ public class HomeActivity extends Activity {
             Tile bA = ((Tile) findViewById(R.id.buttonA));
             bA.setText("<");
             bA.setBackText("");
-            bA.setTypeface(Typeface.NORMAL);
+            //bA.setTypeface(Typeface.NORMAL);
             bA.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -97,8 +96,7 @@ public class HomeActivity extends Activity {
         }
         else
         {
-            bD.setText("");
-            bD.setBackText("");
+            bD.clear();
             bD.setOnClickListener(null);
         }
 

@@ -50,7 +50,7 @@ public class GameActivity extends Activity {
         for (int i = 0; i < buttons.size(); i++) {
             final int j = i;
             Tile b = buttons.get(i);
-            b.setText("");
+            b.clear();
             b.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -75,6 +75,7 @@ public class GameActivity extends Activity {
                     if(i < situation.choices.size()) {
                         buttons.get(i).post(new Runnable() {
                             public void run() {
+                                buttons.get(i).setBackText(letters[i]);
                                 buttons.get(i).setText(situation.choices.get(i).summary);
                             }
                         });
@@ -225,7 +226,7 @@ public class GameActivity extends Activity {
         // Reset buttons
         for (int i = 0; i < buttons.size(); i++) {
             Tile b = buttons.get(i);
-            b.setText("");
+            b.clear();
         }
 
         // Choices
@@ -234,9 +235,9 @@ public class GameActivity extends Activity {
             String letter = letters[i];
 
             // Set voice
-            voice.playSilentUtterance(700, TextToSpeech.QUEUE_ADD, null);
+            voice.playSilentUtterance(400, TextToSpeech.QUEUE_ADD, null);
             voice.speak(letter, TextToSpeech.QUEUE_ADD, null, null);
-            voice.playSilentUtterance(500, TextToSpeech.QUEUE_ADD, null);
+            voice.playSilentUtterance(200, TextToSpeech.QUEUE_ADD, null);
             voice.speak(choice.text, TextToSpeech.QUEUE_ADD, null, ""+i);
         }
 
@@ -262,6 +263,7 @@ public class GameActivity extends Activity {
                 // Affichage des choix
                 StoryEngine.Situation situation = engine.getSituation();
                 for (int i = 0; i < situation.choices.size(); i++) {
+                    buttons.get(i).setBackText(letters[i]);
                     buttons.get(i).setText(situation.choices.get(i).summary);
                 }
             }
