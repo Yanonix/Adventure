@@ -24,7 +24,7 @@
                 android:layout_height="match_parent"
                 aventure:text="42"
                 aventure:backText=""
-                aventure:textSize="40dp"
+                aventure:textSize="30dp"
                 aventure:textColor="@android:color/holo_orange_light"
                 aventure:backgroundColor="@android:color/holo_red_light"
                 />
@@ -38,7 +38,7 @@
                 aventure:text="Castle"
                 aventure:backText=""
                 aventure:textColor="@android:color/holo_red_light"
-                aventure:textSize="40dp"
+                aventure:textSize="30dp"
                 aventure:backgroundColor="@android:color/holo_orange_light"
                 />
 
@@ -58,7 +58,7 @@
                 aventure:text="Unicycle"
                 aventure:backText=""
                 aventure:textColor="@android:color/holo_red_light"
-                aventure:textSize="40dp"
+                aventure:textSize="30dp"
                 aventure:backgroundColor="@android:color/holo_orange_light"
                 />
 
@@ -71,7 +71,7 @@
                 aventure:text="Next"
                 aventure:backText=">"
                 aventure:textColor="@android:color/holo_orange_light"
-                aventure:textSize="40dp"
+                aventure:textSize="30dp"
                 aventure:backgroundColor="@android:color/holo_red_light"
                 />
 

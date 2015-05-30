@@ -23,7 +23,17 @@ public class HomeActivity extends Activity {
 
         // Stories
         stories.add("42");
-        stories.add("castle");
+        stories.add("castle");        // Stories
+        stories.add("sda 42");
+        stories.add("ca stdle");        // Stories
+        stories.add("42asd");
+        stories.add("castsadle");        // Stories
+        stories.add("42 sad");
+        stories.add("ca stsadle");        // Stories
+        stories.add("4s ad2");
+        stories.add("ca stle");        // Stories
+        stories.add("42dsads");
+        stories.add("ca ds stle");
 
         show();
     }
@@ -45,6 +55,7 @@ public class HomeActivity extends Activity {
             if(j < stories.size()) {
                 final int k = j;
                 b.setText(stories.get(j));
+                b.setBackText("");
                 b.setTypeface(Typeface.BOLD);
                 b.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -59,6 +70,7 @@ public class HomeActivity extends Activity {
             else
             {
                 b.setText(null);
+                b.setBackText("");
                 b.setOnClickListener(null);
             }
         }
@@ -66,7 +78,8 @@ public class HomeActivity extends Activity {
         // Previous
         if(startFrom != 0){
             Tile bA = ((Tile) findViewById(R.id.buttonA));
-            bA.setText(getString(R.string.previous));
+            bA.setText("<");
+            bA.setBackText("");
             bA.setTypeface(Typeface.NORMAL);
             bA.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -81,7 +94,8 @@ public class HomeActivity extends Activity {
         if(     (startFrom == 0 && startFrom + 3 < stories.size()) ||
                 (startFrom >  0 && startFrom + 2 < stories.size()))
         {
-            bD.setText(getString(R.string.next));
+            bD.setText(">");
+            bD.setBackText("");
             bD.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -92,6 +106,7 @@ public class HomeActivity extends Activity {
         else
         {
             bD.setText("");
+            bD.setBackText("");
             bD.setOnClickListener(null);
         }
 

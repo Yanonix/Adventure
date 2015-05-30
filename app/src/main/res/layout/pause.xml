@@ -23,7 +23,7 @@
                 aventure:text="Repeat"
                 aventure:backText="↺"
                 aventure:textColor="@android:color/white"
-                aventure:textSize="20dp"
+                aventure:textSize="15dp"
                 aventure:backgroundColor="@android:color/holo_green_light"
                 />
 
@@ -35,7 +35,7 @@
                 aventure:text="Undo last action"
                 aventure:backText="↶"
                 aventure:textColor="@android:color/white"
-                aventure:textSize="20dp"
+                aventure:textSize="15dp"
                 aventure:backgroundColor="@android:color/holo_green_dark"
                 />
 
@@ -57,7 +57,7 @@
                 aventure:text="Menu"
                 aventure:backText="↩"
                 aventure:textColor="@android:color/white"
-                aventure:textSize="20dp"
+                aventure:textSize="15dp"
                 aventure:backgroundColor="@android:color/holo_green_dark"
                 />
 
@@ -69,7 +69,7 @@
                 aventure:text="Resume"
                 aventure:backText="&#9654;"
                 aventure:textColor="@android:color/white"
-                aventure:textSize="20dp"
+                aventure:textSize="15dp"
                 aventure:backgroundColor="@android:color/holo_green_light"
                 />
 

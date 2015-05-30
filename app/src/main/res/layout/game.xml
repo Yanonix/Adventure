@@ -24,7 +24,7 @@
                 aventure:text="Test A"
                 aventure:backText="A"
                 aventure:textColor="@android:color/white"
-                aventure:textSize="20dp"
+                aventure:textSize="15dp"
                 aventure:backgroundColor="@android:color/holo_blue_light"
                 />
 
@@ -37,7 +37,7 @@
                 aventure:text="Test B"
                 aventure:backText="B"
                 aventure:textColor="@android:color/white"
-                aventure:textSize="20dp"
+                aventure:textSize="15dp"
                 aventure:backgroundColor="@android:color/holo_green_light"
                 />
 
@@ -58,7 +58,7 @@
                 aventure:text="Test C"
                 aventure:backText="C"
                 aventure:textColor="@android:color/white"
-                aventure:textSize="20dp"
+                aventure:textSize="15dp"
                 aventure:backgroundColor="@android:color/holo_orange_light"
                 />
 
@@ -70,7 +70,7 @@
                 aventure:text="Pause"
                 aventure:backText="II"
                 aventure:textColor="@android:color/white"
-                aventure:textSize="20dp"
+                aventure:textSize="15dp"
                 aventure:backgroundColor="@android:color/holo_red_light"
                 />
 
