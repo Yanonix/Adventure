@@ -1,6 +1,7 @@
 package com.aventure;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.speech.tts.UtteranceProgressListener;
@@ -51,8 +52,9 @@ public class MainActivity extends Activity {
             b.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    engine.makeChoice(j);
-                    fillQuestions();
+                    if(engine.makeChoice(j)) {
+                        fillQuestions();
+                    }
                 }
             });
         }
@@ -86,11 +88,32 @@ public class MainActivity extends Activity {
                                         boolean available = false;
                                         boolean valid = false;
 
-                                        if(     result.equals("a")      ||
+                                        if(result.contains("exit")    ||
+                                                result.contains("bye bye") ||
+                                                result.contains("goodbye") ||
+                                                result.contains("shut up") ||
+                                                result.contains("f*** you"))
+                                        {
+                                            voice.speak("Bye, see you !", TextToSpeech.QUEUE_FLUSH, null, null);
+
+                                            
+
+                                            Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
+                                            startActivity(intent);
+                                        }
+                                        else if(result.contains("brake")    ||
+                                                result.contains("pause") ||
+                                                result.contains("wait"))
+                                        {
+                                            voice.speak("Pause", TextToSpeech.QUEUE_FLUSH, null, null);
+                                            Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
+                                            startActivity(intent);
+                                        }
+                                        else if(result.equals("a")      ||
                                                 result.equals("hey")    ||
-                                                result.equals("first")  ||
+                                                result.contains("first")  ||
                                                 result.equals("one")    ||
-                                                result.equals("yellow") ||
+                                                result.contains("yellow") ||
                                                 result.equals("orange"))
                                         {
                                             valid = true;
@@ -98,33 +121,24 @@ public class MainActivity extends Activity {
                                         }
                                         else if(result.equals("b")      ||
                                                 result.equals("d")      ||
-                                                result.equals("second") ||
+                                                result.contains("second") ||
                                                 result.equals("two")    ||
-                                                result.equals("green"))
+                                                result.contains("green"))
                                         {
                                             valid = true;
                                             available = engine.makeChoice(1);
                                         }
                                         else if(result.equals("c")      ||
-                                                result.equals("third")  ||
+                                                result.contains("third")  ||
                                                 result.equals("tree")   ||
-                                                result.equals("red"))
+                                                result.contains("blue"))
                                         {
                                             valid = true;
                                             available = engine.makeChoice(2);
                                         }
-                                        else if(result.equals("repeat") ||
-                                                result.equals("repeats"))
-                                        {
+                                        else if(result.contains("repeat") ||
+                                                result.contains("repeats")) {
                                             fillQuestions();
-                                        }
-                                        else if(result.equals("exit")    ||
-                                                result.equals("bye bye") ||
-                                                result.equals("goodbye") ||
-                                                result.equals("shut up") ||
-                                                result.equals("f*** you"))
-                                        {
-                                            voice.speak("Bye, see you !", TextToSpeech.QUEUE_FLUSH, null, null);
                                         }
                                         else
                                         {
