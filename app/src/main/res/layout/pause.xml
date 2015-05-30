@@ -54,7 +54,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:onClick="clickC"
-                aventure:text="Menu"
+                aventure:text="Home"
                 aventure:backText="↩"
                 aventure:textColor="@android:color/white"
                 aventure:textSize="20dp"

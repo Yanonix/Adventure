@@ -76,4 +76,10 @@ public class Tile extends RelativeLayout {
     public void setTypeface(int bold) {
         button.setInputType(bold);
     }
+
+    public void clear() {
+        setText(null);
+        setBackText(null);
+
+    }
 }
