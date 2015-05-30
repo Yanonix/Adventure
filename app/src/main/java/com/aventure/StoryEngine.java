@@ -33,6 +33,16 @@ import javax.xml.transform.stream.StreamResult;
 
 public class StoryEngine {
 
+    class Text {
+        String text;
+        int wait = 0;
+
+        public Text(String text, int wait) {
+            this.text = text;
+            this.wait = wait;
+        }
+    }
+
     class Choice {
         String text;
         String to;
@@ -53,12 +63,12 @@ public class StoryEngine {
 
     class Situation {
         String id;
-        String text;
+        ArrayList<Text> texts;
         ArrayList<Choice> choices;
 
-        public Situation(String id, String text, ArrayList<Choice> choices) {
+        public Situation(String id, ArrayList<Text> texts, ArrayList<Choice> choices) {
             this.id = id;
-            this.text = text;
+            this.texts = texts;
             this.choices = choices;
         }
 
@@ -66,9 +76,18 @@ public class StoryEngine {
         public String toString() {
             return "Situation{" +
                     "id='" + id + '\'' +
-                    ", text='" + text + '\'' +
+                    ", n(text)='" + texts.size() + '\'' +
                     ", n(choices)=" + choices.size() +
                     '}';
+        }
+
+        public String text() {
+            StringBuilder out = new StringBuilder();
+            for (Text t : texts)
+            {
+                out.append(t.text);
+            }
+            return out.toString();
         }
     }
 
@@ -79,8 +98,6 @@ public class StoryEngine {
     public StoryEngine(InputStream is) {
         this.situations = new HashMap<>();
         try {
-            Log.e("x","loading xml");
-
             DocumentBuilderFactory factory;
             DocumentBuilder builder;
 
@@ -95,17 +112,21 @@ public class StoryEngine {
             for (int i = 0; i < situations_xml.getLength(); i++) {
                 Node situation = situations_xml.item(i);
                 String id = situation.getAttributes().getNamedItem("id").getNodeValue();
-                Log.e("x", "id:" + id);
                 if(i == 0){
                     state_id = id;
                 }
                 NodeList childs = situation.getChildNodes();
-                String text = "";
+                ArrayList<Text> texts = new ArrayList<>();
                 ArrayList<Choice> choices = new ArrayList<>();
                 for (int j = 0; j < childs.getLength(); j++) {
                     Node child = childs.item(j);
                     if(child.getNodeName().equals("text")){
-                        text = child.getTextContent().trim();
+                        int wait = 0;
+                        if(child.getAttributes().getNamedItem("wait") != null) {
+                            wait = Integer.parseInt(child.getAttributes().getNamedItem("wait")
+                                    .getNodeValue());
+                        }
+                        texts.add(new Text(child.getTextContent().trim(),wait));
                     }
                     if(child.getNodeName().equals("choices")){
                         NodeList choices_xml = child.getChildNodes();
@@ -119,9 +140,7 @@ public class StoryEngine {
                         }
                     }
                 }
-                this.situations.put(id, new Situation(id, text, choices));
-                Log.e("x", "text:" + text);
-                Log.e("x","choices:"+choices.size());
+                this.situations.put(id, new Situation(id, texts, choices));
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -151,8 +170,16 @@ public class StoryEngine {
         return situations.get(this.state_id);
     }
 
-    public void makeChoice(int i){
-        this.state_id = getSituation().choices.get(i).to;
+    public boolean makeChoice(int i) {
+        if(getSituation().choices.size() >= i) {
+            String next_state = getSituation().choices.get(i).to;
+            if (situations.containsKey(next_state)) {
+                this.state_id = next_state;
+                return true;
+            }
+        }
+
+        return false;
     }
 
 }

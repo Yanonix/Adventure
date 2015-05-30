@@ -1,9 +1,12 @@
 <story>
     <situation id="welcome">
         <text>
-            Welcome dear Friend to the greatest adventure of all time.
-            An adventure for the bravest of us.
+            Welcome dear Friend to the greatest adventure of all time. An adventure for the bravest of us.
+        </text>
+        <text wait="400">
             An adventure for you!
+        </text>
+        <text wait="700">
             Are you ready ?
         </text>
         <choices>
@@ -11,14 +14,16 @@
                 I am! Let's do it baby!
             </choice>
             <choice to="welcome_end">
-                Not now, maybe another time "chérie" !
+                Not now, maybe another time bitch !
             </choice>
         </choices>
     </situation>
     <situation id="welcome2">
         <text>
             Here we are. The moment you've been waiting for all this time.
-            You arrive at the 42 school. A guy call you.
+        </text>
+        <text wait="700">
+            You arrive at the 42 school. A guy behind a desk call you.
         </text>
         <choices>
             <choice to="reception">
@@ -31,7 +36,7 @@
     </situation>
     <situation id="welcome_end">
         <text>
-            The end
+            The end.
         </text>
     </situation>
 </story>

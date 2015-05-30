@@ -1,0 +1,42 @@
+<story>
+    <situation id="welcome">
+        <text>
+            Oh vaillant warrior, welcome to the castle adventure!
+        </text>
+        <text wait="700">
+            Which princess do you want to rescue ?
+        </text>
+        <choices>
+            <choice to="rescue">
+                The hot one
+            </choice>
+            <choice to="rescue">
+                The kind one
+            </choice>
+            <choice to="rescue">
+                The mysterious one
+            </choice>
+        </choices>
+    </situation>
+    <situation id="rescue">
+        <text>
+            I knew it ! Guys are always like this !
+        </text>
+        <text wait="700">
+            Why did you choose here ?
+        </text>
+        <choices>
+            <choice to="welcome_end">
+                To bang her of course !
+            </choice>
+            <choice to="welcome_end">
+                Pure random, like my life
+            </choice>
+        </choices>
+    </situation>
+    <situation id="welcome_end">
+        <text>
+            The end.
+        </text>
+    </situation>
+</story>

@@ -7,9 +7,6 @@ import android.speech.SpeechRecognizer;
 
 import java.util.Locale;
 
-/**
- * Created by yanonix on 30/05/15.
- */
 public class SpeechRecognition {
 
     private SpeechRecognizer mSpeechRecognizer;

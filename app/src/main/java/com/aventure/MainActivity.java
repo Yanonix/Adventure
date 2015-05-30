@@ -17,6 +17,8 @@ import java.util.Locale;
 
 public class MainActivity extends Activity {
 
+    public static String STORY = "MainActivity.story";
+
     StoryEngine engine;
     ArrayList<Button> buttons;
     String[] letters = {"A","B","C"};
@@ -26,15 +28,22 @@ public class MainActivity extends Activity {
     private UtteranceProgressListener utteranceProgressListener;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.main);
 
         // Buttons
         buttons = new ArrayList<>();
         buttons.add((Button) findViewById(R.id.buttonA));
         buttons.add((Button) findViewById(R.id.buttonB));
         buttons.add((Button) findViewById(R.id.buttonC));
+
+        (((Button) findViewById(R.id.buttonMenu))).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setContentView(R.layout.menu);
+            }
+        });
 
         for (int i = 0; i < buttons.size(); i++) {
             final int j = i;
@@ -74,6 +83,8 @@ public class MainActivity extends Activity {
                                         Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
 
                                         result = result.toLowerCase();
+                                        boolean available = false;
+                                        boolean valid = false;
 
                                         if(     result.equals("a")      ||
                                                 result.equals("hey")    ||
@@ -82,8 +93,8 @@ public class MainActivity extends Activity {
                                                 result.equals("yellow") ||
                                                 result.equals("orange"))
                                         {
-                                            engine.makeChoice(0);
-                                            fillQuestions();
+                                            valid = true;
+                                            available = engine.makeChoice(0);
                                         }
                                         else if(result.equals("b")      ||
                                                 result.equals("d")      ||
@@ -91,16 +102,16 @@ public class MainActivity extends Activity {
                                                 result.equals("two")    ||
                                                 result.equals("green"))
                                         {
-                                            engine.makeChoice(1);
-                                            fillQuestions();
+                                            valid = true;
+                                            available = engine.makeChoice(1);
                                         }
                                         else if(result.equals("c")      ||
                                                 result.equals("third")  ||
                                                 result.equals("tree")   ||
                                                 result.equals("red"))
                                         {
-                                            engine.makeChoice(2);
-                                            fillQuestions();
+                                            valid = true;
+                                            available = engine.makeChoice(2);
                                         }
                                         else if(result.equals("repeat") ||
                                                 result.equals("repeats"))
@@ -120,6 +131,19 @@ public class MainActivity extends Activity {
                                             voice.speak("Can you repeat ?", TextToSpeech.QUEUE_FLUSH, null, null);
                                             voice.playSilentUtterance(1, TextToSpeech.QUEUE_ADD, "end");
                                         }
+
+                                        if(valid)
+                                        {
+                                            if(available)
+                                                fillQuestions();
+                                            else
+                                            {
+                                                voice.speak("This answer is not valid", TextToSpeech.QUEUE_FLUSH, null, null);
+                                                voice.playSilentUtterance(1, TextToSpeech.QUEUE_ADD, "end");
+                                            }
+
+                                        }
+
                                     }
                                     else
                                     {
@@ -144,7 +168,7 @@ public class MainActivity extends Activity {
 
                     // Start the game
                     try {
-                        engine = new StoryEngine(getAssets().open("42.xml"));
+                        engine = new StoryEngine(getAssets().open(getIntent().getStringExtra(STORY) + ".xml"));
                         fillQuestions();
                     } catch (IOException e) {
                         e.printStackTrace();
@@ -157,12 +181,17 @@ public class MainActivity extends Activity {
     }
 
     private void fillQuestions() {
-
         // Situations
         final StoryEngine.Situation situation = engine.getSituation();
 
-        Toast.makeText(this, situation.text, Toast.LENGTH_SHORT).show();
-        voice.speak(situation.text, TextToSpeech.QUEUE_FLUSH, null, null);
+        // Toast.makeText(this, situation.text, Toast.LENGTH_SHORT).show();
+
+        for (int i = 0; i < situation.texts.size(); i++) {
+            if(situation.texts.get(i).wait > 0) {
+                voice.playSilentUtterance(situation.texts.get(i).wait, TextToSpeech.QUEUE_ADD, null);
+            }
+            voice.speak(situation.texts.get(i).text, TextToSpeech.QUEUE_FLUSH, null, null);
+        }
 
         // Reset buttons
         for(Button b : buttons) {
@@ -175,7 +204,7 @@ public class MainActivity extends Activity {
             String letter = letters[i];
 
             // Set button
-            buttons.get(i).setText(letter+"\n"+choice.text);
+            buttons.get(i).setText(letter + "\n" + choice.text);
 
             // Set voice
             voice.playSilentUtterance(700, TextToSpeech.QUEUE_ADD, null);
