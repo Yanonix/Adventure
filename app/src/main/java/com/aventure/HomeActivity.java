@@ -31,21 +31,21 @@ public class HomeActivity extends Activity {
     private void show() {
 
         // Buttons
-        ArrayList<Button> buttons = new ArrayList<>();
+        ArrayList<Tile> buttons = new ArrayList<>();
         if(startFrom == 0) {
-            buttons.add((Button) findViewById(R.id.buttonA));
+            buttons.add((Tile) findViewById(R.id.buttonA));
         }
-        buttons.add((Button) findViewById(R.id.buttonB));
-        buttons.add((Button) findViewById(R.id.buttonC));
+        buttons.add((Tile) findViewById(R.id.buttonB));
+        buttons.add((Tile) findViewById(R.id.buttonC));
 
         int j = startFrom;
         for (int i = 0; i < buttons.size(); i++) {
-            Button b = buttons.get(i);
+            Tile b = buttons.get(i);
 
             if(j < stories.size()) {
                 final int k = j;
                 b.setText(stories.get(j));
-                b.setTypeface(null, Typeface.BOLD);
+                b.setTypeface(Typeface.BOLD);
                 b.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -65,9 +65,9 @@ public class HomeActivity extends Activity {
 
         // Previous
         if(startFrom != 0){
-            Button bA = ((Button) findViewById(R.id.buttonA));
+            Tile bA = ((Tile) findViewById(R.id.buttonA));
             bA.setText(getString(R.string.previous));
-            bA.setTypeface(null, Typeface.NORMAL);
+            bA.setTypeface(Typeface.NORMAL);
             bA.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -77,7 +77,7 @@ public class HomeActivity extends Activity {
         }
 
         // Next
-        Button bD = ((Button) findViewById(R.id.buttonD));
+        Tile bD = ((Tile) findViewById(R.id.buttonD));
         if(     (startFrom == 0 && startFrom + 3 < stories.size()) ||
                 (startFrom >  0 && startFrom + 2 < stories.size()))
         {
