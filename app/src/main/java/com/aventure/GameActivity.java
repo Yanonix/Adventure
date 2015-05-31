@@ -17,6 +17,7 @@ import java.util.Locale;
 
 public class GameActivity extends Activity {
 
+    public static final int HOME = 102;
     public static String STORY = "GameActivity.story";
     public static int PAUSE_MENU = 101;
 
@@ -174,11 +175,11 @@ public class GameActivity extends Activity {
                                         }
 
                                     }
-                                    else
+                                    /*else
                                     {
                                         voice.speak("I heard nothing, can you repeat ?", TextToSpeech.QUEUE_FLUSH, null, null);
                                         voice.playSilentUtterance(1, TextToSpeech.QUEUE_ADD, "end");
-                                    }
+                                    }*/
 
                                 }
                             });
@@ -213,12 +214,15 @@ public class GameActivity extends Activity {
         // Situations
         final StoryEngine.Situation situation = engine.getSituation();
 
+        voice.stop();
+
         //if no choices, show end screen
         if(situation.choices.size() == 0){
             findViewById(R.id.buttonEnd).setVisibility(View.VISIBLE);
         }
 
-        voice.stop();
+
+
         for (int i = 0; i < situation.texts.size(); i++) {
             if(situation.texts.get(i).wait > 0) {
                 voice.playSilentUtterance(situation.texts.get(i).wait, TextToSpeech.QUEUE_ADD, null);
@@ -247,7 +251,10 @@ public class GameActivity extends Activity {
         }
 
         // End of speech
-        voice.playSilentUtterance(1, TextToSpeech.QUEUE_ADD, "end");
+        if(situation.choices.size() != 0) {
+            voice.playSilentUtterance(1, TextToSpeech.QUEUE_ADD, "end");
+        }
+
 
     }
 
@@ -263,6 +270,7 @@ public class GameActivity extends Activity {
                 fillQuestions();
             }
             else if (resultCode == PauseActivity.HOME) {
+                setResult(GameActivity.HOME);
                 finish();
             } else {
                 // Affichage des choix

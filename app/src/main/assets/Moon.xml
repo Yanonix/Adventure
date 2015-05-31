@@ -15,7 +15,7 @@
             </choice>
         </choices>
     </situation>
-    <situation id="reception">
+    <situation id="end">
         <text>
             The end.
         </text>

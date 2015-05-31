@@ -7,40 +7,71 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1.0"
+            android:orientation="horizontal"
+            >
 
-            android:orientation="horizontal" >
-
-            <com.aventure.Tile
-                android:id="@+id/buttonA"
+            <!--<com.aventure.Tile
                 android:layout_weight="1.0"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                aventure:text="42"
-                aventure:backText=""
+                aventure:text="Adventure"
+                aventure:backText="Audio books"
+                aventure:textColor="@android:color/white"
                 aventure:textSize="15sp"
-                aventure:textColor="@android:color/holo_orange_light"
-                aventure:backgroundColor="@android:color/holo_red_light"
-                />
+                aventure:backgroundColor="@android:color/holo_blue_light"
+                />-->
 
-
-            <com.aventure.Tile
-                android:id="@+id/buttonB"
-                android:layout_weight="1.0"
+            <RelativeLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                aventure:text="Castle"
-                aventure:backText=""
-                aventure:textColor="@android:color/holo_red_light"
-                aventure:textSize="15sp"
-                aventure:backgroundColor="@android:color/holo_orange_light"
-                />
+                android:layout_weight="1.0"
+                android:background="@android:color/holo_blue_bright">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Audio book"
+                    android:textColor="#18000000"
+                    android:textSize="200sp"
+                    android:layout_weight="1.0"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentStart="true"  />
+
+                <TextView
+                    android:id="@+id/button"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Adventure"
+                    android:textColor="#ff313131"
+                    android:textStyle="bold"
+                    android:layout_weight="1.0"
+                    android:textSize="50sp"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:paddingLeft="200sp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentStart="true" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView"
+                    android:src="@drawable/icon100_com_255"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="301dp"
+                    android:layout_alignParentLeft="true"
+                    android:adjustViewBounds="false"
+                    android:paddingLeft="-20sp" />
+
+            </RelativeLayout>
 
         </LinearLayout>
 
@@ -50,31 +81,60 @@
             android:layout_weight="1.0"
             android:baselineAligned="false">
 
+
             <com.aventure.Tile
-                android:id="@+id/buttonC"
                 android:layout_weight="1.0"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                aventure:text="Unicycle"
-                aventure:backText=""
-                aventure:textColor="@android:color/holo_red_light"
+                android:onClick="clickA"
+                aventure:text="Start a story"
+                aventure:backText="&#9654;"
+                aventure:textColor="@android:color/white"
                 aventure:textSize="15sp"
-                aventure:backgroundColor="@android:color/holo_orange_light"
+                aventure:backgroundColor="@android:color/holo_blue_light"
                 />
+
 
 
             <com.aventure.Tile
-                android:id="@+id/buttonD"
                 android:layout_weight="1.0"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                aventure:text="Next"
-                aventure:backText=">"
-                aventure:textColor="@android:color/holo_orange_light"
+                android:onClick="clickB"
+                aventure:text="Buy books"
+                aventure:backText="+"
+                aventure:textColor="@android:color/white"
                 aventure:textSize="15sp"
-                aventure:backgroundColor="@android:color/holo_red_light"
+                aventure:backgroundColor="@android:color/holo_blue_dark"
                 />
 
-        </LinearLayout>
+
+            <!--
+                        <com.aventure.Tile
+                            android:layout_weight="1.0"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:onClick="clickC"
+                            aventure:text="Home"
+                            aventure:backText="↩"
+                            aventure:textColor="@android:color/white"
+                            aventure:textSize="15sp"
+                            aventure:backgroundColor="@android:color/holo_blue_dark"
+                            />
+
+                        <com.aventure.Tile
+                            android:layout_weight="1.0"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:onClick="clickD"
+                            aventure:text="Resume"
+                            aventure:backText="&#9654;"
+                            aventure:textColor="@android:color/white"
+                            aventure:textSize="15sp"
+                            aventure:backgroundColor="@android:color/holo_blue_light"
+                            />
+            -->
+                    </LinearLayout>
     </LinearLayout>
+
 </RelativeLayout>
