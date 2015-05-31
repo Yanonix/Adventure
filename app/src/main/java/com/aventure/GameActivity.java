@@ -55,12 +55,13 @@ public class GameActivity extends Activity {
             b.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if(engine.makeChoice(j)) {
+                    if (v.isClickable() && engine.makeChoice(j)) {
                         mSpeechRecognition.cancel();
                         fillQuestions();
                     }
                 }
             });
+            b.setClickable(false);
         }
 
         // Voice
@@ -74,10 +75,12 @@ public class GameActivity extends Activity {
                     final StoryEngine.Situation situation = engine.getSituation();
                     final int i = Integer.parseInt(utteranceId);
                     if(i < situation.choices.size()) {
-                        buttons.get(i).post(new Runnable() {
+                        final Tile b = buttons.get(i);
+                        b.post(new Runnable() {
                             public void run() {
-                                buttons.get(i).setBackText(letters[i]);
-                                buttons.get(i).setText(situation.choices.get(i).summary);
+                                b.setBackText(letters[i]);
+                                b.setText(situation.choices.get(i).summary);
+                                b.setClickable(true);
                             }
                         });
 
@@ -235,6 +238,7 @@ public class GameActivity extends Activity {
         for (int i = 0; i < buttons.size(); i++) {
             Tile b = buttons.get(i);
             b.clear();
+            b.setClickable(false);
         }
 
         // Choices
@@ -276,8 +280,10 @@ public class GameActivity extends Activity {
                 // Affichage des choix
                 StoryEngine.Situation situation = engine.getSituation();
                 for (int i = 0; i < situation.choices.size(); i++) {
-                    buttons.get(i).setBackText(letters[i]);
-                    buttons.get(i).setText(situation.choices.get(i).summary);
+                    Tile b = buttons.get(i);
+                    b.setBackText(letters[i]);
+                    b.setText(situation.choices.get(i).summary);
+                    b.setClickable(true);
                 }
             }
         }
