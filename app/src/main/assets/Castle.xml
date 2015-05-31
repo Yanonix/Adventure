@@ -26,8 +26,8 @@
             Why did you choose here ?
         </text>
         <choices>
-            <choice to="welcome_end" summary="Bang her">
-                To bang her of course !
+            <choice to="welcome_end" summary="Marry her">
+                To marry her!
             </choice>
             <choice to="welcome_end" summary="Pure random">
                 Pure random, like my life
