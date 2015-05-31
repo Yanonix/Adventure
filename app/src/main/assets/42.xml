@@ -1,40 +1,99 @@
 <story>
     <situation id="welcome">
         <text>
-            Welcome dear Friend to the greatest adventure of all time. An adventure for the bravest of us.
+            Welcome young padawan to the greatest adventure of all time.
         </text>
         <text wait="400">
-            An adventure for you!
-        </text>
-        <text wait="700">
             Are you ready ?
         </text>
         <choices>
         <choice to="welcome2" summary="I am">
             I am! Let's do it baby!
         </choice>
-        <choice to="welcome_end" summary="Not now">
-            Not now, maybe another time bitch !
+        <choice to="abandon" summary="Not now">
+            Not now, maybe another time !
         </choice>
         </choices>
     </situation>
     <situation id="welcome2">
-        <text>
-            Here we are. The moment you've been waiting for all this time.
-        </text>
         <text wait="700">
-            You arrive at the 42 school. A guy behind a desk call you.
+            You arrive at the 42 school. The girld behind the desk ask you a question.
+        </text>
+        <text wait="700" pitch="1.6">
+            What's your name ?
         </text>
         <choices>
-            <choice to="reception" summary="Go see him">
-                Go see him! He looks nice!
+            <choice to="dev_or_nothing" summary="Obama">
+                Obama
             </choice>
-            <choice to="reception" summary="Go to a bar">
-                Go to the nearest bar
+            <choice to="dev_or_nothing" summary="Rainbow Dash">
+                Rainbow Dash
+            </choice>
+            <choice to="dev_or_nothing" summary="(ᵔᴥᵔ)">
+                Felix the cat
             </choice>
         </choices>
     </situation>
-    <situation id="reception">
+    <situation id="dev_or_nothing">
+        <text pitch="1.6">
+            What kind of superpower do you have ?
+        </text>
+        <choices>
+            <choice to="pitch" summary="Dev">
+                I'm a developer, 0 1 0 1 1 1 0
+            </choice>
+            <choice to="pitch" summary="Artist">
+                I'm an artist, I love to play with colors !
+            </choice>
+            <choice to="pitch" summary="Superhero">
+                I'm the superhero you need !
+            </choice>
+        </choices>
+    </situation>
+    <situation id="pitch">
+        <text pitch="1.6">
+            Now is the pitching time, do you have an idea to pitch ?
+        </text>
+        <choices>
+            <choice to="pitched" summary="Custom horn">
+                Yes! An app to change the horn to funny animals sounds
+            </choice>
+            <choice to="pitched" summary="Jokes">
+                Of course, It's an app make jokes to your passengers for you.
+            </choice>
+            <choice to="not_pitched" summary="No pitch">
+                Nope, not gonna pitch today
+            </choice>
+        </choices>
+    </situation>
+    <situation id="pitched">
+        <text>
+            You pitched and it was a great success! Now it's time for coding!
+        </text>
+        <choice to="end" summary="Let's code">
+            Let's code
+        </choice>
+    </situation>
+    <situation id="not_pitched">
+        <text>
+            You didn't pitched but found a team who do a "car to tree communication platform"
+        </text>
+        <text wait="300">
+            Good luck
+        </text>
+        <choice to="end"  summary="Let's code">
+            Let's code
+        </choice>
+    </situation>
+    <situation id="abandon">
+        <text>
+            You were our biggest hope! What happened ?
+        </text>
+        <text wait="300">
+            Maybe next time...
+        </text>
+    </situation>
+    <situation id="end">
         <text>
             The end.
         </text>
