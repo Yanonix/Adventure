@@ -44,7 +44,7 @@ public class StoriesActivity extends Activity {
             if(j < stories.size()) {
                 final int k = j;
                 b.setText(stories.get(j));
-                b.setBackText("");
+                b.setBackText("*");
                 //b.setTypeface(Typeface.BOLD);
                 b.setOnClickListener(new View.OnClickListener() {
                     @Override
